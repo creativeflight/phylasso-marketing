@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Password — Phylasso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080D14;
+      --bg-card:  #0F172A;
+      --border:   #1E293B;
+      --cyan:     #00E5FF;
+      --cyan-dim: rgba(0,229,255,0.15);
+      --text-1:   #F8FAFC;
+      --text-2:   #E2E8F0;
+      --text-3:   #94A3B8;
+      --text-4:   #64748B;
+      --red:      #FF3D3D;
+      --red-dim:  rgba(255,61,61,0.08);
+      --green:    #22C55E;
+      --amber:    #F59E0B;
+      --input-bg: #111827;
+      --radius:   14px;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text-2);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      min-height: 100vh;
+    }
+
+    /* ── Background glow ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 20%, rgba(0,229,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 80% 80%, rgba(212,175,55,0.04) 0%, transparent 60%);
+    }
+
+    /* ── Card ── */
+    .card {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 420px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px; margin-bottom: 32px;
+    }
+    .logo-shield {
+      width: 60px; height: 60px; border-radius: 16px;
+      background: linear-gradient(135deg, #00E5FF, #0090B8);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 32px rgba(0,229,255,0.25), 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .logo-wordmark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px; font-weight: 900; letter-spacing: 3px;
+      color: var(--text-1);
+    }
+    .logo-wordmark span { color: var(--cyan); }
+
+    /* ── Heading ── */
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--text-1); margin-bottom: 6px;
+    }
+    .sub {
+      font-size: 13px; color: var(--text-4); margin-bottom: 28px;
+    }
+
+    /* ── Form ── */
+    .form-group { margin-bottom: 18px; }
+    label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--text-3); margin-bottom: 6px; letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .input-wrap { position: relative; }
+    input[type="password"], input[type="text"] {
+      width: 100%; padding: 12px 44px 12px 14px;
+      background: var(--input-bg); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text-1);
+      font-family: 'Inter', sans-serif; font-size: 15px;
+      outline: none; transition: border-color 0.2s;
+    }
+    input:focus { border-color: var(--cyan); }
+
+    .toggle-pw {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--text-4); padding: 4px; font-size: 16px;
+      line-height: 1;
+    }
+    .toggle-pw:hover { color: var(--text-2); }
+
+    /* ── Strength bar ── */
+    .pw-strength {
+      display: flex; align-items: center; gap: 8px; margin-top: 8px;
+    }
+    .pw-strength-bar { display: flex; gap: 4px; flex: 1; }
+    .pw-seg {
+      height: 4px; flex: 1; border-radius: 2px;
+      background: var(--border); transition: background 0.25s;
+    }
+    .pw-seg.active-1 { background: var(--red); }
+    .pw-seg.active-2 { background: var(--amber); }
+    .pw-seg.active-3 { background: var(--cyan); }
+    .pw-seg.active-4 { background: var(--green); }
+    .pw-strength-label {
+      font-size: 11px; font-weight: 600; min-width: 42px; text-align: right;
+      transition: color 0.25s;
+    }
+    .label-1 { color: var(--red); }
+    .label-2 { color: var(--amber); }
+    .label-3 { color: var(--cyan); }
+    .label-4 { color: var(--green); }
+
+    /* ── Button ── */
+    .btn {
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, #00E5FF, #0090B8);
+      color: #080D14; font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 700;
+      border: none; border-radius: 10px; cursor: pointer;
+      transition: opacity 0.15s; margin-top: 8px;
+    }
+    .btn:hover:not(:disabled) { opacity: 0.88; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* ── Spinner ── */
+    .spinner {
+      display: inline-block; width: 18px; height: 18px;
+      border: 2px solid rgba(8,13,20,0.2); border-top-color: #080D14;
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Alerts ── */
+    .alert {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 12px 14px; border-radius: 10px;
+      font-size: 13px; line-height: 1.5; margin-bottom: 18px;
+    }
+    .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .alert-error {
+      background: var(--red-dim); color: var(--red);
+      border: 1px solid rgba(255,61,61,0.2);
+    }
+    .alert-success {
+      background: rgba(34,197,94,0.08); color: var(--green);
+      border: 1px solid rgba(34,197,94,0.2);
+    }
+    .alert-info {
+      background: rgba(100,116,139,0.12); color: var(--text-3);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Success state ── */
+    .success-body { text-align: center; padding: 8px 0; }
+    .success-icon {
+      font-size: 48px; margin-bottom: 16px; line-height: 1;
+    }
+    .success-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 700; color: var(--text-1);
+      margin-bottom: 10px;
+    }
+    .success-note {
+      font-size: 13px; color: var(--text-4); line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      position: relative; z-index: 1;
+      margin-top: 24px; font-size: 12px; color: var(--text-4);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+
+    <div class="logo">
+      <div class="logo-shield">
+        <svg width="32" height="36" viewBox="0 0 72 85" fill="none">
+          <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z"
+            fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1.5"/>
+          <circle cx="36" cy="41" r="13" fill="none" stroke="#00E5FF" stroke-width="1.2" opacity="0.8"/>
+          <circle cx="36" cy="41" r="4" fill="#00E5FF" opacity="0.9"/>
+          <line x1="36" y1="25" x2="36" y2="34" stroke="#FFFFFF" stroke-width="1" opacity="0.4"/>
+          <line x1="36" y1="48" x2="36" y2="57" stroke="#FFFFFF" stroke-width="1" opacity="0.4"/>
+          <line x1="20" y1="41" x2="29" y2="41" stroke="#FFFFFF" stroke-width="1" opacity="0.4"/>
+          <line x1="43" y1="41" x2="52" y2="41" stroke="#FFFFFF" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="logo-wordmark">PHYLA<span>SSO</span></div>
+    </div>
+
+    <!-- Invalid token state (shown immediately if no token in URL) -->
+    <div id="state-invalid" style="display:none;">
+      <div class="alert alert-error">
+        <span class="alert-icon">⚠️</span>
+        <span>This reset link is invalid or missing. Please request a new one from the Phylasso app.</span>
+      </div>
+    </div>
+
+    <!-- Reset form -->
+    <div id="state-form" style="display:none;">
+      <h1>Choose a new password</h1>
+      <p class="sub">Enter a new password for your Phylasso account.</p>
+
+      <div id="form-error" class="alert alert-error" style="display:none;">
+        <span class="alert-icon">⚠️</span>
+        <span id="form-error-msg"></span>
+      </div>
+
+      <form id="reset-form" novalidate>
+        <div class="form-group">
+          <label for="pw-new">New Password</label>
+          <div class="input-wrap">
+            <input id="pw-new" type="password" placeholder="Min. 8 characters"
+              autocomplete="new-password" required />
+            <button type="button" class="toggle-pw" id="toggle-new" aria-label="Show password">👁</button>
+          </div>
+          <div id="pw-strength" class="pw-strength" style="display:none;">
+            <div class="pw-strength-bar">
+              <div class="pw-seg" id="seg1"></div>
+              <div class="pw-seg" id="seg2"></div>
+              <div class="pw-seg" id="seg3"></div>
+              <div class="pw-seg" id="seg4"></div>
+            </div>
+            <span class="pw-strength-label" id="pw-label"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pw-confirm">Confirm New Password</label>
+          <div class="input-wrap">
+            <input id="pw-confirm" type="password" placeholder="Repeat new password"
+              autocomplete="new-password" required />
+            <button type="button" class="toggle-pw" id="toggle-confirm" aria-label="Show password">👁</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn" id="submit-btn">Reset Password →</button>
+      </form>
+    </div>
+
+    <!-- Success state -->
+    <div id="state-success" style="display:none;">
+      <div class="success-body">
+        <div class="success-icon">✅</div>
+        <div class="success-title">Password updated</div>
+        <p class="success-note">
+          Your password has been changed successfully.<br/>
+          Open the Phylasso app on your device to sign in with your new password.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="footer">
+    Didn't request a reset? You can safely ignore this page — your account is unchanged.
+  </p>
+
+  <script>
+    // ── Config ─────────────────────────────────────────────────────
+    // Update API_URL to your Cloud Run backend URL before deploying
+    const API_URL = 'https://api.phylasso.com'
+
+    // ── State machine ───────────────────────────────────────────────
+    function show(id) {
+      ['state-invalid', 'state-form', 'state-success'].forEach(s => {
+        document.getElementById(s).style.display = s === id ? '' : 'none'
+      })
+    }
+
+    // ── Token extraction ────────────────────────────────────────────
+    const params = new URLSearchParams(window.location.search)
+    const token  = params.get('token')
+
+    if (!token || token.length < 10) {
+      show('state-invalid')
+    } else {
+      show('state-form')
+    }
+
+    // ── Password visibility toggles ─────────────────────────────────
+    function setupToggle(inputId, btnId) {
+      document.getElementById(btnId).addEventListener('click', () => {
+        const input = document.getElementById(inputId)
+        input.type  = input.type === 'password' ? 'text' : 'password'
+      })
+    }
+    setupToggle('pw-new', 'toggle-new')
+    setupToggle('pw-confirm', 'toggle-confirm')
+
+    // ── Password strength ───────────────────────────────────────────
+    function passwordStrength(pw) {
+      if (!pw) return { level: 0, label: '' }
+      let score = 0
+      if (pw.length >= 8)            score++
+      if (pw.length >= 12)           score++
+      if (pw.length >= 16)           score++
+      if (/[0-9]/.test(pw))          score++
+      if (/[a-z]/.test(pw))          score++
+      if (/[A-Z]/.test(pw))          score++
+      if (/[^a-zA-Z0-9]/.test(pw))   score++
+      if (score <= 1) return { level: 1, label: 'Weak' }
+      if (score <= 3) return { level: 2, label: 'Fair' }
+      if (score <= 5) return { level: 3, label: 'Good' }
+      return { level: 4, label: 'Strong' }
+    }
+
+    const pwInput   = document.getElementById('pw-new')
+    const strengthEl = document.getElementById('pw-strength')
+    const labelEl   = document.getElementById('pw-label')
+    const segs      = [1, 2, 3, 4].map(i => document.getElementById('seg' + i))
+
+    pwInput.addEventListener('input', () => {
+      const { level, label } = passwordStrength(pwInput.value)
+      if (!pwInput.value) {
+        strengthEl.style.display = 'none'
+        return
+      }
+      strengthEl.style.display = 'flex'
+      segs.forEach((seg, i) => {
+        seg.className = 'pw-seg' + (i < level ? ` active-${level}` : '')
+      })
+      labelEl.textContent  = label
+      labelEl.className    = 'pw-strength-label' + (level ? ` label-${level}` : '')
+    })
+
+    // ── Form submission ─────────────────────────────────────────────
+    function showError(msg) {
+      const el = document.getElementById('form-error')
+      document.getElementById('form-error-msg').textContent = msg
+      el.style.display = 'flex'
+    }
+    function hideError() {
+      document.getElementById('form-error').style.display = 'none'
+    }
+
+    document.getElementById('reset-form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      hideError()
+
+      const password = document.getElementById('pw-new').value
+      const confirm  = document.getElementById('pw-confirm').value
+      const btn      = document.getElementById('submit-btn')
+
+      if (password.length < 8) {
+        showError('Password must be at least 8 characters.')
+        return
+      }
+      if (password !== confirm) {
+        showError('Passwords do not match.')
+        return
+      }
+
+      btn.disabled     = true
+      btn.innerHTML    = '<span class="spinner"></span>'
+
+      try {
+        const res = await fetch(`${API_URL}/auth/reset-password`, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ token, password }),
+        })
+
+        if (res.ok) {
+          show('state-success')
+        } else {
+          const data = await res.json().catch(() => ({}))
+          showError(data.error || 'This reset link has expired or is no longer valid. Please request a new one from the app.')
+          btn.disabled  = false
+          btn.innerHTML = 'Reset Password →'
+        }
+      } catch {
+        showError('Could not connect to the server. Please check your connection and try again.')
+        btn.disabled  = false
+        btn.innerHTML = 'Reset Password →'
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phylasso — Brand Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Brand colours */
+      --bg:        #080D14;
+      --bg-card:   #0F172A;
+      --bg-raised: #111827;
+      --border:    #1E293B;
+      --border-hi: #2D3F58;
+      --cyan:      #00E5FF;
+      --cyan-dim:  rgba(0,229,255,0.12);
+      --gold:      #D4AF37;
+      --green:     #22C55E;
+      --red:       #EF4444;
+      --text:      #F8FAFC;
+      --text-2:    #CBD5E1;
+      --text-3:    #94A3B8;
+      --text-4:    #64748B;
+      --text-5:    #334155;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+
+    /* ─── Layout ─────────────────────────────── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ─── Sidebar ────────────────────────────── */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 32px 0 32px;
+      z-index: 10;
+    }
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .sidebar-wordmark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+    .sidebar-wordmark span { color: var(--cyan); }
+    .sidebar-label {
+      padding: 0 24px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-5);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+    .sidebar-nav { list-style: none; }
+    .sidebar-nav a {
+      display: block;
+      padding: 8px 24px;
+      font-size: 12px;
+      color: var(--text-4);
+      transition: color 0.15s, background 0.15s;
+    }
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      color: var(--text);
+      background: rgba(0,229,255,0.05);
+    }
+    .sidebar-nav a.active { border-left: 2px solid var(--cyan); padding-left: 22px; }
+
+    /* ─── Main ───────────────────────────────── */
+    .main {
+      margin-left: 240px;
+      flex: 1;
+      padding: 64px 72px 120px;
+      max-width: calc(100% - 240px);
+    }
+
+    /* ─── Sections ───────────────────────────── */
+    .bg-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .bg-section:last-child { border-bottom: none; }
+
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+    .section-intro {
+      font-size: 14px;
+      color: var(--text-3);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    h3.sub-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+    h3.sub-heading:first-of-type { margin-top: 0; }
+
+    /* ─── Cover / Hero ───────────────────────── */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      min-height: 360px;
+      padding: 64px 0 64px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .cover-glow {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cover-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--text-5);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cover h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .cover h1 span { color: var(--cyan); }
+    .cover-sub {
+      font-size: 15px;
+      color: var(--text-4);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .cover-meta {
+      margin-top: 40px;
+      display: flex;
+      gap: 32px;
+    }
+    .cover-meta-item { font-size: 11px; color: var(--text-5); }
+    .cover-meta-item strong { display: block; color: var(--text-4); font-size: 12px; }
+
+    /* ─── Colour swatches ────────────────────── */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .swatch {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .swatch-block {
+      height: 80px;
+    }
+    .swatch-info {
+      padding: 12px 14px;
+      background: var(--bg-card);
+    }
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--text-4);
+      font-family: 'Courier New', monospace;
+    }
+    .swatch-role {
+      font-size: 10px;
+      color: var(--text-5);
+      margin-top: 4px;
+    }
+
+    /* ─── Type scale ─────────────────────────── */
+    .type-row {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 32px;
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      width: 160px;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: var(--text-5);
+      font-family: 'Courier New', monospace;
+    }
+    .type-meta strong { display: block; color: var(--text-4); font-size: 12px; margin-bottom: 2px; font-family: 'Inter', sans-serif; }
+
+    /* ─── Weight specimens ───────────────────── */
+    .weight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .weight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 18px;
+    }
+    .weight-sample {
+      font-size: 28px;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .weight-label {
+      font-size: 11px;
+      color: var(--text-5);
+    }
+    .weight-label strong { color: var(--text-4); display: block; }
+
+    /* ─── Logo variants ──────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .logo-card {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .logo-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      gap: 14px;
+    }
+    .logo-preview.on-dark { background: var(--bg); }
+    .logo-preview.on-card { background: var(--bg-card); }
+    .logo-preview.on-light { background: #F1F5F9; }
+    .logo-card-label {
+      padding: 12px 16px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-4);
+    }
+    .logo-card-label strong { display: block; color: var(--text-2); font-size: 12px; }
+
+    /* ─── Wordmark in previews ───────────────── */
+    .wm { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 900; letter-spacing: 3px; color: var(--text); }
+    .wm span { color: var(--cyan); }
+    .wm-light { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 900; letter-spacing: 3px; color: #0F172A; }
+    .wm-light span { color: #0090B8; }
+
+    /* ─── Logo exclusion zone ────────────────── */
+    .clearspace-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      outline: 2px dashed rgba(0,229,255,0.25);
+      padding: 24px;
+      background: var(--bg);
+      border-radius: 4px;
+    }
+    .clearspace-label {
+      position: absolute;
+      top: -22px;
+      left: 0;
+      font-size: 10px;
+      color: var(--cyan);
+      opacity: 0.6;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ─── Messaging ──────────────────────────── */
+    .message-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 12px;
+    }
+    .message-card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .message-card-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .message-card-note {
+      font-size: 12px;
+      color: var(--text-4);
+      line-height: 1.7;
+    }
+
+    /* ─── Tone pillars ───────────────────────── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 24px;
+    }
+    .pillar-icon { font-size: 24px; margin-bottom: 12px; }
+    .pillar-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .pillar-desc {
+      font-size: 12px;
+      color: var(--text-4);
+      line-height: 1.7;
+    }
+
+    /* ─── Do / Don't ─────────────────────────── */
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .do-card, .dont-card {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .do-card-header, .dont-card-header {
+      padding: 10px 18px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .do-card-header { background: rgba(34,197,94,0.12); color: var(--green); }
+    .dont-card-header { background: rgba(239,68,68,0.1); color: var(--red); }
+    .do-card-body, .dont-card-body {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+    }
+    .do-card-body li, .dont-card-body li {
+      list-style: none;
+      padding: 11px 18px;
+      font-size: 12px;
+      color: var(--text-3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .do-card-body li:last-child, .dont-card-body li:last-child { border-bottom: none; }
+    .do-card-body li::before { content: '✓'; color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .dont-card-body li::before { content: '✕'; color: var(--red); flex-shrink: 0; font-weight: 700; }
+
+    /* ─── UI Components ──────────────────────── */
+    .component-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .component-label {
+      font-size: 10px;
+      color: var(--text-5);
+      font-family: 'Courier New', monospace;
+      min-width: 80px;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--cyan); color: #000;
+      font-size: 13px; font-weight: 700; padding: 10px 22px;
+      border-radius: 8px; border: none; cursor: default;
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center;
+      background: var(--bg); color: var(--text);
+      font-size: 13px; font-weight: 600; padding: 10px 22px;
+      border-radius: 8px; border: 1px solid var(--border-hi); cursor: default;
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      background: transparent; color: var(--cyan);
+      font-size: 13px; font-weight: 600; padding: 10px 22px;
+      border-radius: 8px; border: 1px solid rgba(0,229,255,0.3); cursor: default;
+    }
+
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+    .badge-free { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+    .badge-pro { background: rgba(212,175,55,0.12); color: var(--gold); border: 1px solid rgba(212,175,55,0.25); }
+    .badge-cyan { background: rgba(0,229,255,0.1); color: var(--cyan); border: 1px solid rgba(0,229,255,0.2); }
+    .badge-alert { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+
+    .chip-card {
+      display: inline-block;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--text-2);
+    }
+
+    /* ─── Icon grid ──────────────────────────── */
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .icon-cell {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      text-align: center;
+      min-width: 80px;
+    }
+    .icon-cell .icon { font-size: 24px; margin-bottom: 6px; }
+    .icon-cell .icon-name { font-size: 10px; color: var(--text-5); }
+
+    /* ─── Tagline list ───────────────────────── */
+    .tagline-list { list-style: none; }
+    .tagline-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .tagline-list li:last-child { border-bottom: none; }
+    .tagline-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .tagline-use {
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--text-5);
+    }
+    .tagline-dot {
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── Nomenclature ───────────────────────── */
+    .name-table { width: 100%; border-collapse: collapse; }
+    .name-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--text-5);
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .name-table td {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-3);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .name-table td:first-child { font-weight: 600; color: var(--text); font-family: 'Courier New', monospace; font-size: 12px; }
+    .name-table tr:last-child td { border-bottom: none; }
+    .allowed { color: var(--green); font-weight: 700; }
+    .not-allowed { color: var(--red); font-weight: 700; }
+
+    /* ─── Photography / Imagery notes ───────── */
+    .imagery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .imagery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .imagery-thumb {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .imagery-label {
+      padding: 12px 14px;
+      font-size: 11px;
+      color: var(--text-4);
+      line-height: 1.6;
+    }
+    .imagery-label strong { display: block; color: var(--text-2); font-size: 12px; margin-bottom: 3px; }
+
+    /* ─── Responsive ─────────────────────────── */
+    @media (max-width: 1000px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; max-width: 100%; padding: 32px 24px 80px; }
+      .logo-grid { grid-template-columns: 1fr 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .do-dont-grid { grid-template-columns: 1fr; }
+      .imagery-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 36px; }
+      .logo-grid { grid-template-columns: 1fr; }
+      .weight-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ─── SIDEBAR ───────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg width="36" height="46" viewBox="0 0 72 85" fill="none" data-v-43f34b0e=""><path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="1.3" opacity="0.85" data-v-43f34b0e=""></path><path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1" opacity="1" data-v-43f34b0e=""></path><circle cx="36" cy="41" r="13" fill="none" stroke="#00E5FF" stroke-width="0.9" opacity="0.7" data-v-43f34b0e=""></circle><circle cx="36" cy="41" r="5.5" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.9" data-v-43f34b0e=""></circle><circle cx="36" cy="41" r="2.5" fill="#00E5FF" data-v-43f34b0e=""></circle><line x1="36" y1="25" x2="36" y2="33" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35" data-v-43f34b0e=""></line><line x1="36" y1="49" x2="36" y2="57" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35" data-v-43f34b0e=""></line><line x1="20" y1="41" x2="28" y2="41" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35" data-v-43f34b0e=""></line><line x1="44" y1="41" x2="52" y2="41" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35" data-v-43f34b0e=""></line></svg>
+      <span class="sidebar-wordmark">PHYLA<span>SSO</span></span>
+    </div>
+
+    <p class="sidebar-label">Brand Identity</p>
+    <ul class="sidebar-nav">
+      <li><a href="#name">Name &amp; Etymology</a></li>
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#colour">Colour Palette</a></li>
+      <li><a href="#typography">Typography</a></li>
+    </ul>
+
+    <p class="sidebar-label">Messaging</p>
+    <ul class="sidebar-nav">
+      <li><a href="#positioning">Positioning</a></li>
+      <li><a href="#taglines">Taglines</a></li>
+      <li><a href="#voice">Tone of Voice</a></li>
+      <li><a href="#do-dont">Do &amp; Don't</a></li>
+    </ul>
+
+    <p class="sidebar-label">Application</p>
+    <ul class="sidebar-nav">
+      <li><a href="#ui">UI Components</a></li>
+      <li><a href="#icons">Icons &amp; Emoji</a></li>
+      <li><a href="#imagery">Imagery Guidelines</a></li>
+    </ul>
+  </aside>
+
+  <!-- ─── MAIN ──────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Cover -->
+    <section class="cover">
+      <div class="cover-glow"></div>
+      <div class="cover-tag">Brand Guidelines — v1.0</div>
+      <h1>PHYLA<span>SSO</span><br/>Brand Guide</h1>
+      <p class="cover-sub">A reference for anyone creating with or on behalf of Phylasso. These guidelines exist to keep the brand consistent, purposeful, and true to its mission — no matter where it appears.</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item"><strong>Version</strong>1.0 — March 2026</div>
+        <div class="cover-meta-item"><strong>Audience</strong>Designers, developers, partners</div>
+        <div class="cover-meta-item"><strong>Domain</strong>phylasso.com</div>
+      </div>
+    </section>
+
+    <!-- ─── NAME & ETYMOLOGY ──────────────────────── -->
+    <section class="bg-section" id="name">
+      <div class="section-eyebrow">01 — Name &amp; Etymology</div>
+      <h2 class="section-title">The name Phylasso</h2>
+      <p class="section-intro">The name is not invented — it is ancient. Understanding its origin is essential to understanding the brand.</p>
+
+      <div class="message-card" style="border-color: rgba(0,229,255,0.2);">
+        <div style="font-size:32px; font-weight:300; color:var(--cyan); letter-spacing:4px; font-style:italic; margin-bottom:6px;">φυλάσσω</div>
+        <div style="font-size:12px; color:var(--text-4); letter-spacing:2px; margin-bottom:14px;">phylássō — Ancient Greek · Verb</div>
+        <div style="font-size:20px; font-weight:700; color:var(--text); margin-bottom:10px;">"to guard, to watch, or to keep safe"</div>
+        <p style="font-size:13px; color:var(--text-3); line-height:1.8;">Specifically describes the act of protecting something of great value — keeping it safe, unimpaired, and intact. Not merely watching over it, but actively ensuring nothing is lost.</p>
+      </div>
+
+      <h3 class="sub-heading">Correct naming</h3>
+      <table class="name-table">
+        <thead>
+          <tr><th>Form</th><th>Usage</th><th>Correct?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Phylasso</td><td>Standard brand name in prose and UI</td><td><span class="allowed">✓ Preferred</span></td></tr>
+          <tr><td>PHYLASSO</td><td>All-caps wordmark in logo and headings only</td><td><span class="allowed">✓ Logo only</span></td></tr>
+          <tr><td>phylasso</td><td>Lowercase in code, URLs, and package names</td><td><span class="allowed">✓ Technical only</span></td></tr>
+          <tr><td>Phyla<span style="color:var(--cyan)">sso</span></td><td>Wordmark split — 'sso' in cyan — logo only</td><td><span class="allowed">✓ Wordmark only</span></td></tr>
+          <tr><td>phylasoo / phylasso</td><td>Common misspellings — double-check copy</td><td><span class="not-allowed">✕ Incorrect</span></td></tr>
+          <tr><td>The Phylasso app</td><td>Avoid "the" before the brand name in most contexts</td><td><span class="not-allowed">✕ Avoid</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Pronunciation</h3>
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:24px 28px; display:flex; gap:40px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:11px; color:var(--text-5); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Phonetic</div>
+          <div style="font-size:22px; font-weight:700; color:var(--text);">fi-<span style="color:var(--cyan);">LAS</span>-oh</div>
+        </div>
+        <div>
+          <div style="font-size:11px; color:var(--text-5); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">IPA</div>
+          <div style="font-size:22px; font-weight:400; color:var(--text-3);">/fɪˈlasəʊ/</div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:11px; color:var(--text-5); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Note</div>
+          <div style="font-size:12px; color:var(--text-4); line-height:1.7;">The stress falls on the second syllable. The final 'o' is a short vowel — not "oh-oh" but a single clean close.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── LOGO ──────────────────────────────────── -->
+    <section class="bg-section" id="logo">
+      <div class="section-eyebrow">02 — Logo</div>
+      <h2 class="section-title">Logo &amp; shield mark</h2>
+      <p class="section-intro">The Phylasso logo consists of two elements: the <strong style="color:var(--text)">shield mark</strong> and the <strong style="color:var(--text)">wordmark</strong>. They should always appear together at their standard sizes unless a single-element application is explicitly required.</p>
+
+      <h3 class="sub-heading">Logo variants</h3>
+      <div class="logo-grid">
+
+        <div class="logo-card">
+          <div class="logo-preview on-dark">
+            <svg width="36" height="42" viewBox="0 0 72 85" fill="none">
+              <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="1.3" opacity="0.85"/>
+              <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1"/>
+              <circle cx="36" cy="41" r="13" fill="none" stroke="#00E5FF" stroke-width="0.9" opacity="0.7"/>
+              <circle cx="36" cy="41" r="5.5" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.9"/>
+              <circle cx="36" cy="41" r="2.5" fill="#00E5FF"/>
+              <line x1="36" y1="25" x2="36" y2="33" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+              <line x1="36" y1="49" x2="36" y2="57" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+              <line x1="20" y1="41" x2="28" y2="41" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+              <line x1="44" y1="41" x2="52" y2="41" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+            </svg>
+            <span class="wm">PHYLA<span>SSO</span></span>
+          </div>
+          <div class="logo-card-label"><strong>Primary — Dark</strong>Use on dark backgrounds (#080D14, #0F172A)</div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-card">
+            <svg width="36" height="42" viewBox="0 0 72 85" fill="none">
+              <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="1.3" opacity="0.85"/>
+              <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1"/>
+              <circle cx="36" cy="41" r="5.5" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.9"/>
+              <circle cx="36" cy="41" r="2.5" fill="#00E5FF"/>
+            </svg>
+            <span class="wm">PHYLA<span>SSO</span></span>
+          </div>
+          <div class="logo-card-label"><strong>Simplified — Dark Card</strong>Reduced detail mark for small sizes or compact layouts</div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-light">
+            <svg width="36" height="42" viewBox="0 0 72 85" fill="none">
+              <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#0090B8" stroke-width="1.3" opacity="0.85"/>
+              <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="transparent" stroke="#1E293B" stroke-width="1"/>
+              <circle cx="36" cy="41" r="5.5" fill="none" stroke="#0090B8" stroke-width="1" opacity="0.9"/>
+              <circle cx="36" cy="41" r="2.5" fill="#0090B8"/>
+            </svg>
+            <span class="wm-light">PHYLA<span>SSO</span></span>
+          </div>
+          <div class="logo-card-label"><strong>Light Background</strong>Dark navy text, deep cyan accent — use only when dark bg unavailable</div>
+        </div>
+
+      </div>
+
+      <h3 class="sub-heading">Clear space</h3>
+      <p style="font-size:13px; color:var(--text-4); margin-bottom:24px; line-height:1.7;">Always maintain a minimum clear space around the logo equal to the height of the letter <strong style="color:var(--text-3)">P</strong> in the wordmark. No other elements, text, or imagery should appear within this zone.</p>
+      <div style="padding: 40px 0; display:flex; justify-content:flex-start;">
+        <div class="clearspace-demo">
+          <span class="clearspace-label">← minimum clear space →</span>
+          <svg width="32" height="38" viewBox="0 0 72 85" fill="none">
+            <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="1.3" opacity="0.85"/>
+            <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1"/>
+            <circle cx="36" cy="41" r="5.5" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.9"/>
+            <circle cx="36" cy="41" r="2.5" fill="#00E5FF"/>
+          </svg>
+          <span class="wm" style="font-size:15px;">PHYLA<span>SSO</span></span>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Minimum size</h3>
+      <div style="display:flex; gap:32px; align-items:flex-end; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <svg width="64" height="75" viewBox="0 0 72 85" fill="none" style="display:block;margin:0 auto 8px;">
+            <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="1.3" opacity="0.85"/>
+            <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1"/>
+            <circle cx="36" cy="41" r="13" fill="none" stroke="#00E5FF" stroke-width="0.9" opacity="0.7"/>
+            <circle cx="36" cy="41" r="5.5" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.9"/>
+            <circle cx="36" cy="41" r="2.5" fill="#00E5FF"/>
+            <line x1="36" y1="25" x2="36" y2="33" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+            <line x1="36" y1="49" x2="36" y2="57" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+            <line x1="20" y1="41" x2="28" y2="41" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+            <line x1="44" y1="41" x2="52" y2="41" stroke="#FFFFFF" stroke-width="0.7" opacity="0.35"/>
+          </svg>
+          <div style="font-size:10px; color:var(--text-5);">Full mark — 64px+</div>
+        </div>
+        <div style="text-align:center;">
+          <svg width="32" height="38" viewBox="0 0 72 85" fill="none" style="display:block;margin:0 auto 8px;">
+            <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="1.3" opacity="0.85"/>
+            <path d="M36 10L12 19V40C12 54 36 74 36 74C36 74 60 54 60 40V19Z" fill="rgba(212,175,55,0.04)" stroke="#FFFFFF" stroke-width="1"/>
+            <circle cx="36" cy="41" r="5.5" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.9"/>
+            <circle cx="36" cy="41" r="2.5" fill="#00E5FF"/>
+          </svg>
+          <div style="font-size:10px; color:var(--text-5);">Simplified — 24–63px</div>
+        </div>
+        <div style="text-align:center;">
+          <svg width="16" height="19" viewBox="0 0 72 85" fill="none" style="display:block;margin:0 auto 8px;">
+            <path d="M36 2L4 13V40C4 59 36 82 36 82C36 82 68 59 68 40V13Z" fill="none" stroke="#00E5FF" stroke-width="2" opacity="0.85"/>
+            <circle cx="36" cy="41" r="2.5" fill="#00E5FF"/>
+          </svg>
+          <div style="font-size:10px; color:var(--text-5);">Icon only — below 24px</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── COLOUR ─────────────────────────────────── -->
+    <section class="bg-section" id="colour">
+      <div class="section-eyebrow">03 — Colour Palette</div>
+      <h2 class="section-title">Colours</h2>
+      <p class="section-intro">Phylasso operates in dark environments — both digitally and in spirit. The palette is built around deep navy backgrounds, a single vivid cyan primary, and restrained accent colours for hierarchy and state.</p>
+
+      <h3 class="sub-heading">Primary palette</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#00E5FF;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cyan</div>
+            <div class="swatch-hex">#00E5FF</div>
+            <div class="swatch-role">Primary accent — actions, highlights, logo</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#080D14;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Void</div>
+            <div class="swatch-hex">#080D14</div>
+            <div class="swatch-role">App &amp; page background</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#0F172A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Navy</div>
+            <div class="swatch-hex">#0F172A</div>
+            <div class="swatch-role">Card and surface background</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F8FAFC;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Frost</div>
+            <div class="swatch-hex">#F8FAFC</div>
+            <div class="swatch-role">Primary text, headings</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Neutral scale</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#1E293B;"></div>
+          <div class="swatch-info"><div class="swatch-name">Slate 800</div><div class="swatch-hex">#1E293B</div><div class="swatch-role">Default borders</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#2D3F58;"></div>
+          <div class="swatch-info"><div class="swatch-name">Slate 700</div><div class="swatch-hex">#2D3F58</div><div class="swatch-role">Elevated borders / hover</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#334155;"></div>
+          <div class="swatch-info"><div class="swatch-name">Slate 600</div><div class="swatch-hex">#334155</div><div class="swatch-role">Faintest text / legal</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#64748B;"></div>
+          <div class="swatch-info"><div class="swatch-name">Slate 500</div><div class="swatch-hex">#64748B</div><div class="swatch-role">Muted / placeholder text</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#94A3B8;"></div>
+          <div class="swatch-info"><div class="swatch-name">Slate 400</div><div class="swatch-hex">#94A3B8</div><div class="swatch-role">Secondary body text</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#CBD5E1;"></div>
+          <div class="swatch-info"><div class="swatch-name">Slate 300</div><div class="swatch-hex">#CBD5E1</div><div class="swatch-role">List items, descriptions</div></div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Accent colours</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#D4AF37;"></div>
+          <div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-hex">#D4AF37</div><div class="swatch-role">Pro tier — upgrade, premium</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#22C55E;"></div>
+          <div class="swatch-info"><div class="swatch-name">Green</div><div class="swatch-hex">#22C55E</div><div class="swatch-role">Free tier, success states</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#EF4444;"></div>
+          <div class="swatch-info"><div class="swatch-name">Red</div><div class="swatch-hex">#EF4444</div><div class="swatch-role">Alerts, urgent, errors</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F59E0B;"></div>
+          <div class="swatch-info"><div class="swatch-name">Amber</div><div class="swatch-hex">#F59E0B</div><div class="swatch-role">Warnings, moderate threats</div></div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Colour usage rules</h3>
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="padding:12px 18px; font-size:10px; font-weight:700; letter-spacing:1.5px; color:var(--text-5); text-transform:uppercase; border-bottom:1px solid var(--border);">Rules</div>
+        <ul style="list-style:none;">
+          <li style="padding:12px 18px; font-size:12px; color:var(--text-3); border-bottom:1px solid var(--border); line-height:1.6;"><strong style="color:var(--cyan);">Cyan</strong> is the only primary action colour. Do not use other colours for primary buttons or interactive highlights.</li>
+          <li style="padding:12px 18px; font-size:12px; color:var(--text-3); border-bottom:1px solid var(--border); line-height:1.6;"><strong style="color:var(--gold);">Gold</strong> is reserved exclusively for Pro tier messaging. Do not use it decoratively.</li>
+          <li style="padding:12px 18px; font-size:12px; color:var(--text-3); border-bottom:1px solid var(--border); line-height:1.6;"><strong style="color:var(--red);">Red</strong> is reserved for genuine alerts and errors. Do not use it for branding or decoration.</li>
+          <li style="padding:12px 18px; font-size:12px; color:var(--text-3); line-height:1.6;">Never place cyan text on a light background — contrast is insufficient. Use the deep cyan <code style="font-size:11px; color:var(--text-4);">#0090B8</code> variant for light-background contexts instead.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─── TYPOGRAPHY ────────────────────────────── -->
+    <section class="bg-section" id="typography">
+      <div class="section-eyebrow">04 — Typography</div>
+      <h2 class="section-title">Typography</h2>
+      <p class="section-intro">Phylasso uses two typefaces with distinct roles. <strong style="color:var(--text)">Barlow Condensed</strong> is reserved exclusively for the wordmark and logo. <strong style="color:var(--text)">Inter</strong> is used for all other UI text, body copy, and headings.</p>
+
+      <h3 class="sub-heading">Wordmark typeface — Barlow Condensed</h3>
+      <div class="message-card" style="border-color: rgba(0,229,255,0.2);">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:52px; font-weight:900; color:var(--text); letter-spacing:4px; line-height:1; margin-bottom:10px;">PHYLA<span style="color:var(--cyan);">SSO</span></div>
+        <div style="font-size:12px; color:var(--text-4); margin-bottom:12px;">Google Fonts · Barlow Condensed · Weights 600–900 · Used for logo wordmark only</div>
+        <div style="font-size:13px; color:var(--text-4); line-height:1.7;">Do not use Barlow Condensed outside of the logo and wordmark context. All other headings, labels, and body copy use Inter.</div>
+      </div>
+
+      <h3 class="sub-heading">UI &amp; body typeface — Inter</h3>
+      <div class="message-card">
+        <div style="font-size:48px; font-weight:800; color:var(--text); letter-spacing:-2px; line-height:1; margin-bottom:10px;">Inter</div>
+        <div style="font-size:12px; color:var(--text-4); margin-bottom:16px;">Google Fonts · Open source · Variable weight 100–900</div>
+        <div style="font-size:13px; color:var(--text-3); line-height:1.9;">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>
+          abcdefghijklmnopqrstuvwxyz<br/>
+          0123456789 !@£$%^&amp;*()–
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Weight reference</h3>
+      <div class="weight-grid">
+        <div class="weight-card"><div class="weight-sample" style="font-weight:300;">Aa</div><div class="weight-label"><strong>Light 300</strong>Footnotes, legal text</div></div>
+        <div class="weight-card"><div class="weight-sample" style="font-weight:400;">Aa</div><div class="weight-label"><strong>Regular 400</strong>Body copy, descriptions</div></div>
+        <div class="weight-card"><div class="weight-sample" style="font-weight:500;">Aa</div><div class="weight-label"><strong>Medium 500</strong>Navigation, labels</div></div>
+        <div class="weight-card"><div class="weight-sample" style="font-weight:600;">Aa</div><div class="weight-label"><strong>SemiBold 600</strong>Sub-headings, list items</div></div>
+        <div class="weight-card"><div class="weight-sample" style="font-weight:700;">Aa</div><div class="weight-label"><strong>Bold 700</strong>Feature titles, CTAs</div></div>
+        <div class="weight-card"><div class="weight-sample" style="font-weight:800;">Aa</div><div class="weight-label"><strong>ExtraBold 800</strong>Section headings</div></div>
+        <div class="weight-card"><div class="weight-sample" style="font-weight:900;">Aa</div><div class="weight-label"><strong>Black 900</strong>Hero headlines, wordmark</div></div>
+      </div>
+
+      <h3 class="sub-heading">Type scale</h3>
+      <div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Display</strong>56–72px / 900<br/>tracking: -2px</div>
+          <div style="font-size:52px; font-weight:900; letter-spacing:-2px; color:var(--text); line-height:1.05;">Guard what<br/>matters.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>H1</strong>36–48px / 900<br/>tracking: -1.5px</div>
+          <div style="font-size:40px; font-weight:900; letter-spacing:-1.5px; color:var(--text); line-height:1.1;">Be the one who's ready.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>H2</strong>28–32px / 800<br/>tracking: -1px</div>
+          <div style="font-size:28px; font-weight:800; letter-spacing:-1px; color:var(--text); line-height:1.2;">Everything your household needs.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>H3</strong>18–20px / 700</div>
+          <div style="font-size:18px; font-weight:700; color:var(--text);">Smart Inventory Tracking</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Body large</strong>16–17px / 400<br/>leading: 1.7</div>
+          <div style="font-size:16px; font-weight:400; color:var(--text-3); line-height:1.7; max-width:500px;">Track your supplies, generate personalised emergency plans, and receive live threat alerts so you're ready before disaster strikes.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Body</strong>13–14px / 400<br/>leading: 1.65</div>
+          <div style="font-size:13px; font-weight:400; color:var(--text-4); line-height:1.65; max-width:500px;">Log food, water, first aid, and tools with quantities, units, and expiry dates. Scan barcodes to add items instantly. Get alerts before anything expires.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Label / Cap</strong>10–11px / 700<br/>tracking: 1.5–2px</div>
+          <div style="font-size:10px; font-weight:700; letter-spacing:2px; color:var(--cyan); text-transform:uppercase;">Core Features</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Letter spacing rules</h3>
+      <div style="font-size:13px; color:var(--text-3); line-height:1.9; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:20px 24px;">
+        <strong style="color:var(--text);">Headlines (weight 800–900):</strong> Negative tracking of −1px to −2px. Tighter at larger sizes.<br/>
+        <strong style="color:var(--text);">Wordmark only:</strong> +3px tracking, all caps. Never apply wordmark tracking to body text.<br/>
+        <strong style="color:var(--text);">Uppercase labels:</strong> +1.5px to +2.5px tracking. Never use all-caps without tracking.<br/>
+        <strong style="color:var(--text);">Body copy:</strong> Default 0 tracking. Do not add positive tracking to sentence-case body text.
+      </div>
+    </section>
+
+    <!-- ─── POSITIONING ───────────────────────────── -->
+    <section class="bg-section" id="positioning">
+      <div class="section-eyebrow">05 — Messaging</div>
+      <h2 class="section-title">Brand positioning</h2>
+      <p class="section-intro">Phylasso sits at the intersection of practical household preparedness and intelligent technology. It is not a survival brand, a military brand, or a fear-based brand. It is calm, capable, and built for ordinary families.</p>
+
+      <h3 class="sub-heading">Positioning statement</h3>
+      <div class="message-card" style="border-left: 3px solid var(--cyan);">
+        <div class="message-card-text">"Phylasso is the offline-first emergency preparedness app for UK and US households — giving families the plans, supplies awareness, and real-time intelligence they need to stay safe when it matters most."</div>
+      </div>
+
+      <h3 class="sub-heading">Target audience</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="pillar-card">
+          <div class="pillar-icon">🏠</div>
+          <div class="pillar-title">The Prepared Household</div>
+          <div class="pillar-desc">Families and couples who want basic preparedness without being overwhelmed. They want clear checklists, simple tracking, and peace of mind.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🎒</div>
+          <div class="pillar-title">The Serious Prepper</div>
+          <div class="pillar-desc">Individuals who actively plan for emergencies — bug-out bags, multiple scenarios, supply rotation. They want depth, AI-generated plans, and live threat data.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">👨‍👩‍👧</div>
+          <div class="pillar-title">Parents with Young Children</div>
+          <div class="pillar-desc">Parents who feel responsible for their family's safety. They want household-specific guidance that accounts for children, dietary needs, and medications.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🌍</div>
+          <div class="pillar-title">The Climate-Aware</div>
+          <div class="pillar-desc">People increasingly aware of flood, wildfire, and storm risk. They want real-time local alerts and to understand their specific environmental exposure.</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Key messaging pillars</h3>
+      <div class="message-card">
+        <div class="message-card-tag">Pillar 1 — Offline First</div>
+        <div class="message-card-text">When the network goes down, Phylasso stays up.</div>
+        <div class="message-card-note">Lead with this in all product and app store copy. It is the most differentiating technical fact and the most emotionally resonant for the target audience — emergencies often disrupt connectivity.</div>
+      </div>
+      <div class="message-card">
+        <div class="message-card-tag">Pillar 2 — Household-focused</div>
+        <div class="message-card-text">Built for your household — not for soldiers, not for agencies.</div>
+        <div class="message-card-note">Always refer to "your household", "your family", "your supplies". Avoid military or institutional language. This is for ordinary people in ordinary homes.</div>
+      </div>
+      <div class="message-card">
+        <div class="message-card-tag">Pillar 3 — AI-powered but trustworthy</div>
+        <div class="message-card-text">Intelligent guidance, not blind automation. Always verify with official sources.</div>
+        <div class="message-card-note">Lean into the AI capability as a feature, but always pair it with the legal disclaimer and the instruction to cross-check with authorities. This builds trust and manages liability.</div>
+      </div>
+      <div class="message-card">
+        <div class="message-card-tag">Pillar 4 — Calm authority</div>
+        <div class="message-card-text">Not alarmist. Not dismissive. Just prepared.</div>
+        <div class="message-card-note">Phylasso exists to reduce anxiety through readiness, not to amplify fear. All copy should feel steady, capable, and matter-of-fact.</div>
+      </div>
+    </section>
+
+    <!-- ─── TAGLINES ──────────────────────────────── -->
+    <section class="bg-section" id="taglines">
+      <div class="section-eyebrow">06 — Taglines</div>
+      <h2 class="section-title">Approved taglines</h2>
+      <p class="section-intro">These lines have been approved for use in marketing, app stores, social, and press. Use them as written — do not paraphrase or adapt them without review.</p>
+
+      <ul class="tagline-list">
+        <li>
+          <span class="tagline-dot"></span>
+          <div>
+            <div class="tagline-text">Guard what matters most.</div>
+            <div class="tagline-use">Primary tagline — use in hero sections, final CTAs, App Store subtitle</div>
+          </div>
+        </li>
+        <li>
+          <span class="tagline-dot"></span>
+          <div>
+            <div class="tagline-text">Emergency preparedness — offline first.</div>
+            <div class="tagline-use">Product descriptor — use beneath wordmark in listings, metadata, social bios</div>
+          </div>
+        </li>
+        <li>
+          <span class="tagline-dot"></span>
+          <div>
+            <div class="tagline-text">Be the one who's ready.</div>
+            <div class="tagline-use">Hero headline — landing page, paid ads, social creative</div>
+          </div>
+        </li>
+        <li>
+          <span class="tagline-dot"></span>
+          <div>
+            <div class="tagline-text">When the internet goes down, Phylasso stays up.</div>
+            <div class="tagline-use">Offline feature call-out — feature sections, App Store screenshots</div>
+          </div>
+        </li>
+        <li>
+          <span class="tagline-dot"></span>
+          <div>
+            <div class="tagline-text">Your household's preparedness hub.</div>
+            <div class="tagline-use">Product description — press kit, social media, email subject lines</div>
+          </div>
+        </li>
+        <li>
+          <span class="tagline-dot"></span>
+          <div>
+            <div class="tagline-text">AI-powered plans. Real-time alerts. Always offline-ready.</div>
+            <div class="tagline-use">Feature summary — Google Play short description, preview cards</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ─── VOICE ─────────────────────────────────── -->
+    <section class="bg-section" id="voice">
+      <div class="section-eyebrow">07 — Tone of Voice</div>
+      <h2 class="section-title">Tone of voice</h2>
+      <p class="section-intro">How Phylasso communicates is as important as what it communicates. The brand should feel like a knowledgeable, calm friend — not a corporation, not a doomsday preacher, not a tech startup trying too hard.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">🧭</div>
+          <div class="pillar-title">Calm &amp; authoritative</div>
+          <div class="pillar-desc">Write with confidence, not urgency. Preparedness is a steady habit, not a panic response. Use declarative sentences. Avoid exclamation marks in informational copy.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🏡</div>
+          <div class="pillar-title">Household-first</div>
+          <div class="pillar-desc">Always address the reader as a household member, not a soldier, expert, or consumer. "Your household", "your family", "your supplies" — never abstract or corporate.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🌿</div>
+          <div class="pillar-title">Practical, not preachy</div>
+          <div class="pillar-desc">Tell people what to do, not why they should feel bad for not doing it. Avoid guilt-driven copy. Focus on enablement — here is what you can do, here is how Phylasso helps.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">📖</div>
+          <div class="pillar-title">Plain English</div>
+          <div class="pillar-desc">No jargon, no militarisms, no tech buzzwords. If a word could be simpler, make it simpler. Write for a 14-year-old who has never heard of emergency preparedness.</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Vocabulary guidance</h3>
+      <table class="name-table" style="margin-top:0;">
+        <thead><tr><th>Instead of</th><th>Use</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Security</td><td>Safety, preparedness</td><td>Security implies military or digital — we mean household safety</td></tr>
+          <tr><td>Command centre</td><td>Preparedness hub</td><td>Household-first; avoids military framing</td></tr>
+          <tr><td>Threat intelligence</td><td>Threat monitoring, live alerts</td><td>Less agency-speak, more practical</td></tr>
+          <tr><td>Authoritative sources</td><td>Trusted sources, government feeds</td><td>Simpler, less formal</td></tr>
+          <tr><td>Encrypted storage</td><td>Stored on your device</td><td>The outcome matters more than the mechanism</td></tr>
+          <tr><td>End-to-end</td><td>From setup to emergency</td><td>Avoid overused tech phrases</td></tr>
+          <tr><td>Survivalist</td><td>Preparer, household, family</td><td>Survivalist implies extreme — we are for mainstream households</td></tr>
+          <tr><td>Doomsday</td><td>(Never use)</td><td>Undermines calm authority positioning</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─── DO & DON'T ────────────────────────────── -->
+    <section class="bg-section" id="do-dont">
+      <div class="section-eyebrow">08 — Do &amp; Don't</div>
+      <h2 class="section-title">Do &amp; Don't</h2>
+      <p class="section-intro">Quick reference for the most common brand mistakes to avoid.</p>
+
+      <div class="do-dont-grid">
+        <div class="do-card">
+          <div class="do-card-header">✓ Do</div>
+          <ul class="do-card-body">
+            <li>Write "Phylasso" — capital P, lowercase the rest</li>
+            <li>Use cyan as the sole primary action colour</li>
+            <li>Lead with the offline-first capability</li>
+            <li>Address readers as households or families</li>
+            <li>Use calm, steady, declarative language</li>
+            <li>Always pair AI-generated content with a disclaimer</li>
+            <li>Use the shield mark with adequate clear space</li>
+            <li>Refer to preparedness, not survivalism</li>
+            <li>Keep logo on dark or near-dark backgrounds where possible</li>
+            <li>Use Inter at the approved weights and tracking</li>
+          </ul>
+        </div>
+        <div class="dont-card">
+          <div class="dont-card-header">✕ Don't</div>
+          <ul class="dont-card-body">
+            <li>Write "PHYLASSO" outside of the logo/wordmark context</li>
+            <li>Use gold for anything other than Pro tier</li>
+            <li>Use fear, urgency, or alarmist language to sell</li>
+            <li>Use military or agency framing ("command", "intelligence")</li>
+            <li>Stretch, rotate, recolour, or add effects to the shield mark</li>
+            <li>Use cyan text on a light or white background</li>
+            <li>Describe users as "survivalists" or use "doomsday" language</li>
+            <li>Present AI-generated content without the legal disclaimer</li>
+            <li>Use the full wordmark tracking (+3px) on body copy</li>
+            <li>Add decorative or third-party logos near the Phylasso mark</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── UI COMPONENTS ─────────────────────────── -->
+    <section class="bg-section" id="ui">
+      <div class="section-eyebrow">09 — UI Components</div>
+      <h2 class="section-title">UI components</h2>
+      <p class="section-intro">Core interface elements and their approved styles. All components use Inter, brand tokens, and consistent border radii of 8px (small), 10px (default), or 16px (card).</p>
+
+      <h3 class="sub-heading">Buttons</h3>
+      <div class="component-row">
+        <span class="component-label">Primary</span>
+        <button class="btn-primary">Download free</button>
+      </div>
+      <div class="component-row">
+        <span class="component-label">Secondary</span>
+        <button class="btn-secondary">Learn more</button>
+      </div>
+      <div class="component-row">
+        <span class="component-label">Ghost</span>
+        <button class="btn-ghost">View plans</button>
+      </div>
+
+      <h3 class="sub-heading">Badges &amp; labels</h3>
+      <div class="component-row">
+        <span class="component-label">Free tier</span>
+        <span class="badge badge-free">Free forever</span>
+      </div>
+      <div class="component-row">
+        <span class="component-label">Pro tier</span>
+        <span class="badge badge-pro">⭐ Pro</span>
+      </div>
+      <div class="component-row">
+        <span class="component-label">Live / Active</span>
+        <span class="badge badge-cyan">● Live</span>
+      </div>
+      <div class="component-row">
+        <span class="component-label">Alert</span>
+        <span class="badge badge-alert">⚠ Urgent</span>
+      </div>
+
+      <h3 class="sub-heading">Cards</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:600px;">
+        <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:24px;">
+          <div style="font-size:20px; margin-bottom:10px;">📦</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px;">Feature card</div>
+          <div style="font-size:12px; color:var(--text-4); line-height:1.6;">Standard 16px radius, 1E293B border, 0F172A background.</div>
+        </div>
+        <div style="background:var(--bg-card); border:1px solid rgba(212,175,55,0.3); border-radius:16px; padding:24px; background:linear-gradient(160deg,#0F172A 60%,rgba(212,175,55,0.04));">
+          <div style="font-size:10px; font-weight:700; letter-spacing:1.5px; color:var(--gold); margin-bottom:10px;">⭐ PRO</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px;">Pro card</div>
+          <div style="font-size:12px; color:var(--text-4); line-height:1.6;">Gold border at 30% opacity, subtle warm gradient overlay.</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Section label pattern</h3>
+      <div style="display:flex; flex-direction:column; gap:6px; max-width:400px; margin-bottom:4px;">
+        <div style="display:inline-flex; align-items:center; gap:8px; font-size:10px; font-weight:700; color:var(--cyan); letter-spacing:2px; text-transform:uppercase;">
+          <span style="display:block; width:20px; height:1px; background:var(--cyan);"></span>
+          Core Features
+        </div>
+        <div style="font-size:26px; font-weight:900; color:var(--text); letter-spacing:-0.8px; line-height:1.15;">Section heading<br/>goes here</div>
+        <div style="font-size:13px; color:var(--text-3); line-height:1.7;">Supporting description in slate-400, max width ~580px, regular weight.</div>
+      </div>
+    </section>
+
+    <!-- ─── ICONS ─────────────────────────────────── -->
+    <section class="bg-section" id="icons">
+      <div class="section-eyebrow">10 — Icons &amp; Emoji</div>
+      <h2 class="section-title">Icons &amp; emoji usage</h2>
+      <p class="section-intro">Phylasso uses emoji as lightweight, universally supported icons in the UI. They should be used sparingly and consistently. Each feature area has an assigned emoji — do not swap them.</p>
+
+      <h3 class="sub-heading">Feature icon assignments</h3>
+      <div class="icon-grid">
+        <div class="icon-cell"><div class="icon">📦</div><div class="icon-name">Inventory</div></div>
+        <div class="icon-cell"><div class="icon">🤖</div><div class="icon-name">AI Plans</div></div>
+        <div class="icon-cell"><div class="icon">🚨</div><div class="icon-name">Threat Alerts</div></div>
+        <div class="icon-cell"><div class="icon">📚</div><div class="icon-name">Knowledge</div></div>
+        <div class="icon-cell"><div class="icon">🏠</div><div class="icon-name">Household</div></div>
+        <div class="icon-cell"><div class="icon">📊</div><div class="icon-name">Monthly Report</div></div>
+        <div class="icon-cell"><div class="icon">📄</div><div class="icon-name">PDF Export</div></div>
+        <div class="icon-cell"><div class="icon">🗺️</div><div class="icon-name">Threat Map</div></div>
+        <div class="icon-cell"><div class="icon">🆘</div><div class="icon-name">SOS Toolkit</div></div>
+        <div class="icon-cell"><div class="icon">📵</div><div class="icon-name">Offline</div></div>
+        <div class="icon-cell"><div class="icon">🔔</div><div class="icon-name">Notifications</div></div>
+        <div class="icon-cell"><div class="icon">📍</div><div class="icon-name">Location</div></div>
+        <div class="icon-cell"><div class="icon">🔥</div><div class="icon-name">Wildfire</div></div>
+        <div class="icon-cell"><div class="icon">🌊</div><div class="icon-name">Flood</div></div>
+        <div class="icon-cell"><div class="icon">🌍</div><div class="icon-name">Earthquake</div></div>
+        <div class="icon-cell"><div class="icon">💨</div><div class="icon-name">Air Quality</div></div>
+      </div>
+
+      <h3 class="sub-heading">Usage rules</h3>
+      <div style="font-size:13px; color:var(--text-3); background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:20px 24px; line-height:1.9;">
+        Use emoji inside icon containers (44×44px, cyan-dim background, 10px radius) — not inline in prose.<br/>
+        Do not use emoji in page titles, meta descriptions, or legal text.<br/>
+        Use only one emoji per UI card or list item — never combine two.<br/>
+        Prefer the above assigned set for consistency; avoid introducing new feature emoji without review.
+      </div>
+    </section>
+
+    <!-- ─── IMAGERY ───────────────────────────────── -->
+    <section class="bg-section" id="imagery">
+      <div class="section-eyebrow">11 — Imagery</div>
+      <h2 class="section-title">Imagery guidelines</h2>
+      <p class="section-intro">Until official photography and illustration assets are produced, these principles govern all visual choices in marketing materials, social media, and press.</p>
+
+      <div class="imagery-grid">
+        <div class="imagery-card">
+          <div class="imagery-thumb" style="background:#0A1628;">✅</div>
+          <div class="imagery-label"><strong>Household environments</strong>Kitchens, utility rooms, family spaces — real and lived-in. Shows the product in context without dramatisation.</div>
+        </div>
+        <div class="imagery-card">
+          <div class="imagery-thumb" style="background:#0A1628;">✅</div>
+          <div class="imagery-label"><strong>Dark, cinematic tone</strong>Low-key lighting, cool colour palette matching brand colours. Avoid bright, lifestyle-stock imagery — it clashes with the brand.</div>
+        </div>
+        <div class="imagery-card">
+          <div class="imagery-thumb" style="background:#0A1628;">✅</div>
+          <div class="imagery-label"><strong>App screenshots</strong>Always use dark theme. Show real screens, not mockup placeholders. Use device frames that match the brand palette.</div>
+        </div>
+        <div class="imagery-card">
+          <div class="imagery-thumb" style="background:#1a0a0a;">❌</div>
+          <div class="imagery-label"><strong>Avoid: disaster imagery</strong>Do not show floods, fires, or destruction. Phylasso prepares people — it does not exploit fear. No post-apocalyptic or crisis photography.</div>
+        </div>
+        <div class="imagery-card">
+          <div class="imagery-thumb" style="background:#1a0a0a;">❌</div>
+          <div class="imagery-label"><strong>Avoid: military aesthetic</strong>No camouflage, tactical gear, weapons, or uniformed figures. Phylasso is for families, not armed forces.</div>
+        </div>
+        <div class="imagery-card">
+          <div class="imagery-thumb" style="background:#1a0a0a;">❌</div>
+          <div class="imagery-label"><strong>Avoid: bright stock photos</strong>Smiling people on white backgrounds, generic business photography, or overly polished lifestyle imagery that feels inconsistent with the dark theme.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Active sidebar link on scroll
+  const sections = document.querySelectorAll('.bg-section[id], .cover')
+  const links = document.querySelectorAll('.sidebar-nav a')
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id)
+        })
+      }
+    })
+  }, { rootMargin: '-20% 0px -60% 0px' })
+
+  sections.forEach(s => s.id && obs.observe(s))
+</script>
+
+</body>
+</html>
